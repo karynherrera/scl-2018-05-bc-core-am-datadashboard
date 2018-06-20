@@ -1,4 +1,5 @@
 window.onload = (()=>{
+
 //Declaracion de botones del menú del sidebar y secciones a donde mostraran
 const btnHome = document.getElementById('btnHome');
 const seccionHome =document.getElementById('home');
