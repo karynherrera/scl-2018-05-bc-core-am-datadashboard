@@ -1,8 +1,12 @@
+
+
 function bddJason() {
     Promise.all([
       fetch(`../data/cohorts/lim-2018-03-pre-core-pw/users.json`),
       fetch(`../data/cohorts/lim-2018-03-pre-core-pw/progress.json`),
       fetch(`../data/cohorts.json`),
+
+
 
     ]).then((responses) => { //cuando llegue la respuesta
       return Promise.all(
