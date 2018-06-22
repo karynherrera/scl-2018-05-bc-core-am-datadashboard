@@ -54,7 +54,12 @@ window.fillUserList = ()=>{
 // haciendo conexxion al JSON carga toda la lista del cohort y se puede seleccionar una opcion
 const selectCohort = document.getElementById('selectCohort');
 window.fillCohortList = ()=>{
-  window.CohortData;
+  window.cohortsData.forEach(element =>{
+    let optionNode = document.createElement('option');
+    optionNode.text = element.id;
+    selectCohort.appendChild(optionNode);
+    console.log('Option > ' + optionNode);
+  });
 };
 
 window.fillProgressList = ()=>{
