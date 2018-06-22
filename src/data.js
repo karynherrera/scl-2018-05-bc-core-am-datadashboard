@@ -49,7 +49,6 @@ window.computeUsersStats = (users, progress, courses) => {
 
       //element.stats.percent = progress[element.id].intro.percent;
       
-    
   });
   return result = Object.entries(usuario);
 };
