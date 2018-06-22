@@ -3,6 +3,7 @@ window.userData = {};
 window.progressData = {};
 window.cohortsData = {};
 
+
 window.users = ()=>{
   Promise.all([
     fetch('/data/cohorts.json'),
@@ -27,7 +28,8 @@ window.users = ()=>{
     window.fillProgressList();
 
     allJson.forEach((jsonElement)=>{
-      jsonElement.forEach((elementObj)=>{ // este recorrido es dentro del array cohorts
+      jsonElement.forEach((element)=>{
+        
       });
     });
   }).catch((error) => {

@@ -17,6 +17,10 @@
 #container { 
     margin: 0 auto;
     display: flex;
+    max-width: 1000px;
+    width: 100%;
+
+
     
 }
 #barra-sedes {
@@ -47,6 +51,8 @@
   margin: 0;
   font-weight: bolder;
 }
+
+
 .percent {
   font-size: 3em;
   margin: 0;
@@ -101,6 +107,8 @@
     background-color: #FFE521; 
     width: 100%; 
     height: 100%;
+    padding: 0px;
+    
 }
 .btn-secondary{
     color: #333333; 
@@ -121,6 +129,10 @@
     display: flex;
     align-items: stretch;
     width: 100%;
+    padding: 0%;
+    
+    
+
 }  
 #sidebar {
     background-color: #FFE521;
@@ -141,7 +153,164 @@
 }
 .col-sm-9{
     padding: 0;
+    
 }
+
+/* Aqui van los estilos de los cursos*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+   }
+   
+   button {
+     width: 40px;
+     background-color: inherit;
+     border-color: inherit;
+   }
+   
+   span { /*estilo para el título del proyecto*/
+     font-size: 1.9em;
+     margin: auto;
+   }
+   
+   nav {
+     width: 15%;
+     text-align: center;
+     background: #333333;
+     right: 45px;
+     color: #F7B617;
+   }
+   
+   ul {
+     list-style: none;
+     padding: 0;
+   }
+   
+   li:hover {
+     background-color: #F7B617;
+   }
+   
+   a {
+      text-decoration: none;
+      color: white;
+   }
+   
+   a:hover{
+     color: #fff;
+   }
+   
+   div {
+     display: inline-block;
+     margin: 0 0.75em;
+   }
+   
+   h2 { /* estilos para el título de la primera fila de botones */
+     color: #fff;
+     margin-top: 0.625em;
+     padding-left: 5%;
+     font-size: 1.25em;
+   }
+   
+   p { /* estilos para los párrafos de la primera fila de botones */
+     display: inline-block;
+     color: #fff;
+     font-size: 1.25em;
+     margin: 0;
+   }
+   
+#barra-sedes {
+  height: 100px;
+  background-color: #FFE521;
+   
+	
+}
+
+#sedes {
+  border-radius: 8px;
+  font-size: 20px;
+  margin-left: 50px;
+  margin-top: 25px;
+	width: 230px;
+
+}
+
+#selectCohort {
+  border-radius: 8px;
+  font-size: 20px;
+  width: 150px;
+}
+
+#headboard{
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#container { /* estilos para el contenedor de la sección principal */
+  width: 100%;
+	margin-left: auto; 
+	
+}
+
+.numTotal { /* estilos para los datos dinámicos de la primera hilera de botones */
+  font-size: 2.25em;
+  margin: 0;
+  font-weight: bolder;
+}
+
+.percent {
+  font-size: 3em;
+  margin: 0;
+  font-weight: bolder;
+  margin-top: 1%;
+	
+}
+
+.totalStudents, /* estilos para los contenedores de datos dinámicos de la primera hilera de botones */
+.totalPercent {
+  display: block;
+}
+
+.alumnas-2 { /* estilos para la tarjeta que muestra el total de alumnas por cohort */
+  background-color: rgb(245, 20, 76);
+  border-radius: 15px;
+  height:23.75em;
+  width: 23%;
+  margin-top: 8%;
+  text-align: center;
+  
+	
+}
+
+.prom-general { /* estilos para la tarjeta que muestra el total de alumnas que alcanzaron la meta general */
+	 background-color: rgb(76, 104, 231);
+	 border-radius: 15px;
+	 height: 23.75em;
+	 width: 23%;
+	 margin-top: 8%;
+	 text-align: center;
+ }
+ 
+ .logros-cursos { /* estilos para la tarjeta que muestra el total de alumnas que alcazaron los completados cursos */
+	background-color: rgb(247, 106, 11);
+	border-radius: 15px;
+	height: 23.75em;
+	width: 23%;
+  margin-top: 8%;
+  text-align: center;
+ }
+ 
+ .comple-task{ /* estilos para la tarjeta que muestra el total de alumnas que alcazaron la meta todos los task */
+	background-color: rgb(3, 158, 36);
+	border-radius: 15px;
+	height: 23.75em;
+	width: 23%;
+	margin-top: 8%;
+	text-align: center;
+ }
 .col-sm-3{
     padding: 0;
     margin: 0;

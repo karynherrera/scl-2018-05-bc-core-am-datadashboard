@@ -51,6 +51,8 @@ window.fillUserList = ()=>{
   });  
 };
 
+// haciendo conexxion al JSON carga toda la lista del cohort y se puede seleccionar una opcion
+const selectCohort = document.getElementById('selectCohort');
 window.fillCohortList = ()=>{
   window.CohortData;
 };
