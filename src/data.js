@@ -1,7 +1,7 @@
 // invocamos la data de users y creamos un arreglo con todos los usuarios
-window.userData = {};
-window.progressData = {};
-window.cohortsData = {};
+window.userData = [];
+window.progressData = [];
+window.cohortsData = [];
 
 
 window.users = ()=>{
@@ -38,14 +38,20 @@ window.users = ()=>{
 };
 
 window.computeUsersStats = (users, progress, courses) => {
-  let usuario = {};
-  usuario = users.forEach(element=>{
-    element.stats = {
-      exercises: {},
-      reads: {},
-      quizzes: {},
-      percent: 0};
+  let usuario;
+ let result;
+  usuario = users.forEach(element=>{ // cada element es un sub array entonces a c/u le creamos una propiedad nueva stats
+    element.stats = { // se le crea una propiedad stats que es un objeto de objetos
+      exercises: {}, // objeto con 3 propiedades total, completed y percent
+      reads: {}, // objeto con 3 propiedades total, completed y percent
+      quizzes: {}, // objeto con 5 propiedades total, completed, percent, scoreSum, scoreAvg
+      percent: 0};// numero entre 0 y 100 que indica el porcentaje de completitud del usuario respecto a todos los cursos de su cohort
+
+      //element.stats.percent = progress[element.id].intro.percent;
+      
+    
   });
+  return result = Object.entries(usuario);
 };
 
 window.sortUsers = (users, orderBy, orderDirection) =>{

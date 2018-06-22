@@ -58,11 +58,13 @@ window.fillCohortList = ()=>{
 };
 
 window.fillProgressList = ()=>{
-  window.ProgressData;
-  window.userData;
+
   let alumna = Object.entries(window.userData);
   let progreso = Object.entries(window.progressData);
-  // console.log(progreso);
+  let curso = Object.entries(window.cohortsData);
+  
+  console.log(result);
+  /*
   for (let i in alumna) {
     let user;
     user = alumna[i];
@@ -72,7 +74,7 @@ window.fillProgressList = ()=>{
         console.log(user[i].name + ' ' + progresId[1].intro.percent);
       } 
     }
-  }
+  }*/
 };
 
 lista.addEventListener('change', ()=>{
