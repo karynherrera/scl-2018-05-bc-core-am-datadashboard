@@ -1,7 +1,7 @@
 // invocamos la data de users y creamos un arreglo con todos los usuarios
-window.userData = [];
-window.progressData = [];
-window.cohortsData = [];
+window.userData = {};
+window.progressData = {};
+window.cohortsData = {};
 
 window.users = ()=>{
   Promise.all([
@@ -17,23 +17,33 @@ window.users = ()=>{
       )
     );
   }).then((allJson) => {// allJson es el arreglo que contiene todas las respuestas de los 2 primeros json cohort y users
-    console.log(allJson);
-    window.userData = allJson[1]; // lleno la funcion global window.userData con allJson[1] que seria el arreglo de usuarios
+    window.userData = allJson[1]; // lleno la funcion global window.userData con allJson[1] que es el arreglo de usuarios
     window.fillUserList();// cuando tenga lista la respuesta llamo a la funcion de llenado
-    window.cohortsData = allJson[0];
+    
+    window.cohortsData = allJson[0];// la posicion 0 de alljason tiene el arreglo con datos de los cohorts
     window.fillCohortList();
+
+    window.progressData = allJson[2];
+    window.fillProgressList();
+
     allJson.forEach((jsonElement)=>{
-      jsonElement.forEach((element)=>{
-        console.log(elementTwo);
+      jsonElement.forEach((elementObj)=>{ // este recorrido es dentro del array cohorts
       });
     });
   }).catch((error) => {
-    alert('Error', error);
+    
   });
 };
 
 window.computeUsersStats = (users, progress, courses) => {
-
+  let usuario = {};
+  usuario = users.forEach(element=>{
+    element.stats = {
+      exercises: {},
+      reads: {},
+      quizzes: {},
+      percent: 0};
+  });
 };
 
 window.sortUsers = (users, orderBy, orderDirection) =>{
