@@ -20,11 +20,7 @@
     max-width: 1000px;
     width: 100%;
 }
-#barra-sedes {
-  height: 100px;
-  background-color: #FFE521;
-    
-}
+
 #sedes {
   border-radius: 8px;
   font-size: 20px;
@@ -37,6 +33,8 @@
   font-size: 20px;
   width: 150px;
 }
+
+
 #headboard{
   width: 85%;
   margin: 0 auto;
@@ -139,7 +137,7 @@
 }
 .col-sm-9{
     padding: 0;
-    
+    text-align: center;   
 }
 
 /* Aqui van los estilos de los cursos*/
@@ -187,14 +185,14 @@ span { /*estilo para el título del proyecto*/
      margin: 0 0.75em;
    }
    
-   h2 { /* estilos para el título de la primera fila de botones */
+   h2 { /* estilos para el título de la primera fila de tarjetas */
      color: #fff;
      margin-top: 0.625em;
      padding-left: 5%;
      font-size: 1.25em;
    }
    
-   p { /* estilos para los párrafos de la primera fila de botones */
+   p { /* estilos para los párrafos de la primera fila de tarjetas */
      display: inline-block;
      color: #fff;
      font-size: 1.20em;
@@ -219,7 +217,8 @@ span { /*estilo para el título del proyecto*/
 #selectCohort {
   border-radius: 10px;
   font-size: 20px;
-  width: 195px;
+  width: 80%;
+  text-align: center;
   
 }
 
@@ -235,53 +234,6 @@ span { /*estilo para el título del proyecto*/
 	
 }
 
-.numTotal { /* estilos para los datos dinámicos de la primera hilera de botones */
-  font-size: 2.25em;
-  margin: 0;
-  font-weight: bolder;
-}
-
-.percent {
-  font-size: 3em;
-  margin: 0;
-  font-weight: bolder;
-  margin-top: 1%;
-	
-}
-
-.totalStudents, /* estilos para los contenedores de datos dinámicos de la primera hilera de botones */
-.totalPercent {
-  display: block;
-}
-
-.alumnas-2 { /* estilos para la tarjeta que muestra el total de alumnas por cohort */
-  background-color: rgb(245, 20, 76);
-  border-radius: 15px;
-  height:21.75em;
-  width: 30%;
-  margin-top: 8%;
-  text-align: center;
-  
-	
-}
-
- .logros-cursos { /* estilos para la tarjeta que muestra el total de alumnas que alcazaron los completados cursos */
-	background-color: rgb(247, 106, 11);
-	border-radius: 15px;
-	height: 21.75em;
-	width: 30%;
-  margin-top: 8%;
-  text-align: center;
- }
- 
- .comple-task{ /* estilos para la tarjeta que muestra el total de alumnas que alcazaron la meta todos los task */
-	background-color: rgb(3, 158, 36);
-	border-radius: 15px;
-	height: 21.75em;
-	width: 30%;
-	margin-top: 8%;
-	text-align: center;
- }
 .col-sm-3{
     padding: 0;
     margin: 0;
