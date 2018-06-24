@@ -74,7 +74,6 @@ window.fillProgressList = ()=>{
   const inputBuscar = document.getElementById('buscarAlumna');
   inputBuscar.addEventListener('change', ()=> {
     window.limpiarTabla();
-
   });
 
   btnSearch.addEventListener('click', ()=> {
@@ -88,7 +87,7 @@ window.fillProgressList = ()=>{
     window.limpiarTabla();
     const x = document.getElementById('nombreAlumna').value;
     window.buscar(users, x, progress);
-    inputBuscar.value= x;
+    inputBuscar.value = x;
   });
   // window.computeUsersStats(users, progress, courses);
   // console.log(result);

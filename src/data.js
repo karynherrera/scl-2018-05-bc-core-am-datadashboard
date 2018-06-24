@@ -78,19 +78,46 @@ window.buscar = (users, clave, progress) =>{
       for (let i in progress) {
         if (element[1].id === progress[i][0]) {
           // console.log(progress[i][1].intro.units);
-          let unidades = Object.keys(progress[i][1].intro.units);
-          let cursos = Object.keys(progress[i][1].intro.units);
-          console.log(cursos);
+          let unidades = Object.keys(progress[i][1].intro.units);// aca accedemos a las unidades de los cursos de cada alumna
+          let cursos = Object.keys(progress[i][1]); // aca accedemos a los cursos que tiene cada alumna
+          let porcentajeGral = progress[i][1].intro.percent;
+          let percentUnits = Object.entries(progress[i][1].intro.units);
+          //const resultado = percentUnits.find( unidad => unidad.units==='introduction');
+          let result;
+
+          //console.log(Object.entries(percentUnits[0][1]));
+          percentUnits.forEach (unit=>{
+              unit.element;
+              //result=unit.forEach(element => element.percent)
+            //  console.log(unit.element);
+            });
+          //console.log(result);
           // console.log((element[1].name)+' '+); 
-          for (let i = 0; i < cursos.length; i++) {
-            let hilera = document.createElement('tr');
-            let celda = document.createElement('td');
-            let textoCelda = document.createTextNode(cursos[i]);
-            celda.appendChild(textoCelda);
+          let celdaUnits, textoCeldaUnits, colUnits;
+          let hilera = document.createElement('tr');// crea la fila para la info
+          for (let i = 0; i < cursos.length; i++) { 
+            let celdaCurso = document.createElement('td'); // crea la celda para los cursos
+            let textoCeldaCurso = document.createTextNode(cursos[i]);
+            celdaCurso.appendChild(textoCeldaCurso);
+ 
+            let celdaPercenGral = document.createElement('td');
+            let textoPercenGral = document.createTextNode(porcentajeGral + '% Completado');
+            celdaPercenGral.appendChild(textoPercenGral);
+
+            colUnits = document.createElement('td');
+            for (let j = 0; j < unidades.length; j++) {
+              celdaUnits = document.createElement('tr');
+              textoCeldaUnits = document.createTextNode(unidades[j]);
+              celdaUnits.appendChild(textoCeldaUnits); 
+              colUnits.appendChild(celdaUnits);
+            }
             
-            hilera.appendChild(celda);
-            tblBody.appendChild(hilera);
+            hilera.appendChild(celdaCurso);
+            hilera.appendChild(celdaPercenGral);
+            hilera.appendChild(colUnits);
           }
+          
+          tblBody.appendChild(hilera);
           tabla.appendChild(tblBody);
         }// cierre del segundo if
 
