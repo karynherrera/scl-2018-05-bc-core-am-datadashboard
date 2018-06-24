@@ -1,5 +1,5 @@
 window.onload = (()=>{
-  window.users();
+  window.datas();
   // Declaracion de botones del menú del sidebar y secciones a donde mostraran
   const btnHome = document.getElementById('btnHome');
   const seccionHome = document.getElementById('home');
@@ -35,12 +35,15 @@ window.onload = (()=>{
   });
 }); // fin de window onload
 
+const formBuscar = document.getElementById('formBuscar');
 
 const lista = document.getElementById('nombreAlumna'); // select para elegir alumna por nombre
 const btnSearch = document.getElementById('btnBuscar');// boton para buscar alumna
-const inputAlumna = document.getElementById('buscarAlumna');
-const tabla = document.getElementById('table');
 
+
+formBuscar.addEventListener('focus', function(event) {
+  event.preventDefault();
+});
 
 window.fillUserList = ()=>{
   window.userData; // esto es un arreglo
@@ -58,17 +61,31 @@ window.fillCohortList = ()=>{
     let optionNode = document.createElement('option');
     optionNode.text = element.id;
     selectCohort.appendChild(optionNode);
-    console.log('Option > ' + optionNode);
   });
 };
 
-window.fillProgressList = ()=>{
 
-  let alumna = Object.entries(window.userData);
-  let progreso = Object.entries(window.progressData);
-  let curso = Object.entries(window.cohortsData);
+window.fillProgressList = ()=>{
+  let users = Object.entries(window.userData);
+  let progress = Object.entries(window.progressData);
+  let courses = Object.entries(window.cohortsData);
   
-  console.log(result);
+
+  btnSearch.addEventListener('click', function(event) {
+    /*
+    const tblBody = document.getElementById('tbody');
+    const tabla = document.getElementById('table');
+    tabla.appendChild(tblBody); */
+    event.preventDefault();
+    window.limpiarTabla();
+    //tabla.removeChild(tblBody);
+    const clave = document.getElementById('buscarAlumna').value;
+    window.buscar(users, clave, progress);
+    // tabla.removeChild(tblBody);
+  });
+
+  // window.computeUsersStats(users, progress, courses);
+  // console.log(result);
   /*
   for (let i in alumna) {
     let user;
@@ -79,6 +96,15 @@ window.fillProgressList = ()=>{
         console.log(user[i].name + ' ' + progresId[1].intro.percent);
       } 
     }
+
+    for (let i =0; i< alumna.length; i++) {
+    usersObject = alumna[i];
+  }
+  let users =  usersObject[1];
+  for (let x in progreso) {
+    progresObject = progreso[x];
+  }
+  let progress = progresObject[1];
   }*/
 };
 

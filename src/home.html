@@ -36,7 +36,7 @@
               <!--BUSCADOR-->
               <form class="form-inline justify-content-left">
                 <input class="form-control sm-2" type="text" placeholder="Buscar" size="15">
-                <button class="btn btn-outline-success sm-0" type="submit">Buscar</button>
+                <button id ="buttonSearch" class="btn btn-outline-success " type="button" >Buscar</button>
               </form>
               <!--MENU-->
               <form>
@@ -57,9 +57,10 @@
       </section>
       <!--SECCION DATOS GENERALES-->
       <section class="col-sm-9 justify-content-center" >
-        <div class="col-md-12 justify-content-center">
-        <div class="general" id="sed"></div>
+        
         <section id="home">
+            <div class="col-md-12 justify-content-center"></div>
+            <div class="general" id="sed"></div>
             <div class="col-md-12 justify-content-center">
            <select id="selectCohort"  title="seleccion de cohort">
               <option value="---"></option>
@@ -122,7 +123,7 @@
         <!-- fin de la sección general  -->    
         <!--SECCION DATOS ALUMNAS-->
         <section id="datosAlumnas">
-          <section class="col-sm-6">
+          
             <section class="form-group">
               <!--Dropdown con el listado de todas las alumnas-->
               <label for="exampleFormControlSelect1">Listado de Alumnas</label>
@@ -131,26 +132,23 @@
               </select>
             <section id="print"></section>
             </section>
-          </section>
-          <section class="col-sm-6">
-            <form class="form-inline justify-content-left">
+            <form id="formBuscar" class="form-inline justify-content-left">
               <input class="form-control sm-2" type="text" placeholder="Buscar" size="15" id="buscarAlumna">
-              <button class="btn btn-outline-success sm-0" type="submit" id="btnBuscar">Buscar</button>
+              <button class="btn btn-outline-success sm-0" type="button" id="btnBuscar">Buscar</button>
             </form>
-          </section>
+          
           <article id="nombre"></article>
           <div class="table-responsive-sm">
             <table class="table" id="table">
               <thead  id= "theadAlumna">
                 <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Cursos Inscritos</th>
+                  <th scope="col">Unidades</th>
                   <th scope="col">Progreso General</th>
                   <th scope="col">Progreso Específico</th>
                 </tr>
               </thead>
               <tbody id="tbody">
-               
               </tbody>
             </table>
           </div>
@@ -168,7 +166,7 @@
             </section>
             <form class="form-inline justify-content-left">
               <input class="form-control sm-2" type="text" placeholder="Buscar" size="15" id="buscarCohort">
-              <button class="btn btn-outline-success sm-0" type="submit" id="btnBuscarCohort">Buscar</button>
+              <button class="btn btn-outline-success sm-0" typer= "button" id="btnBuscarCohort">Buscar</button>
             </form>
           </section>
           <article id="nameCohort"></article>
@@ -212,6 +210,7 @@
                 </td>
               </tr>
         </section>
+        
       </section>
         <!-- fin de la sección Cohorts  -->
       </section>
