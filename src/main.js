@@ -78,12 +78,17 @@ window.fillProgressList = ()=>{
     tabla.appendChild(tblBody); */
     event.preventDefault();
     window.limpiarTabla();
-    //tabla.removeChild(tblBody);
+    // tabla.removeChild(tblBody);
     const clave = document.getElementById('buscarAlumna').value;
     window.buscar(users, clave, progress);
     // tabla.removeChild(tblBody);
   });
 
+  lista.addEventListener('change', ()=>{
+    window.limpiarTabla();
+    let x = document.getElementById('nombreAlumna').value;
+    window.buscar(users, x, progress);
+  });
   // window.computeUsersStats(users, progress, courses);
   // console.log(result);
   /*
@@ -108,15 +113,4 @@ window.fillProgressList = ()=>{
   }*/
 };
 
-lista.addEventListener('change', ()=>{
-  let x = document.getElementById('nombreAlumna').value;
-  
-  tblBody = document.getElementById('tbody');
-  // Crea las hileras de la tabla
-  var hilera = document.createElement('tr');
-  var celda = document.createElement('td');
-  var textoCelda = document.createTextNode(x);
-  celda.appendChild(textoCelda);
-  hilera.appendChild(celda);
-  tblBody.appendChild(hilera);
-});
+

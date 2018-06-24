@@ -87,8 +87,8 @@ window.buscar = (users, clave, progress) =>{
             let celda = document.createElement('td');
             let textoCelda = document.createTextNode(cursos[i]);
             celda.appendChild(textoCelda);
-            hilera.appendChild(celda);
             
+            hilera.appendChild(celda);
             tblBody.appendChild(hilera);
           }
           tabla.appendChild(tblBody);
