@@ -40,6 +40,9 @@ Con los datos proporcionados por el cliente analizamos la posible solución de e
 
 Para plazmar las ideas del brainstorming diseñamos unos wireframes basicos en base a lo solicitado por el cliente.
 
+![Alt text](Documents/sketch/Prototipado1.jpg?raw=true "1")
+![Alt text](Documents/sketch/Prototipado2.jpg?raw=true "2")
+
 Luego hicimos un scketch de baja fidelidad para ver de forma más clara como organizariamos las tareas e información que requiere el cliente.
 
 ![Alt text](Documents/prototipoBalsamic/1.png?raw=true "Login")
@@ -58,13 +61,7 @@ Por ultimo realizamos el prototipado de alta fidelidad en Figma para ver mejor l
 
 https://www.figma.com/file/aueKPF43QJgxicRux8LFzij7/Data-Dashboard
 
-#### 5) Implementación y Testing
-
 Nos organizamos con un trello, repartiendo las tareas principales en 3 sprints 
 
 https://trello.com/b/Sxp3jP45/datadashboard
 
-Desarrollamos el datadashboard remarcando la funcionalidad de los requerimientos minimos que solicitó el cliente, en este caso que se pueda seleccionar un cohort de una lista de cohorts, buscar alumnas por nombre, calcular grado de completitud de los cursos, ordenar alumnas por completitud general y especifico de lecturas, ejercicios autocorregidos y quiz.
-
-La aplicación funciona sin problemas en distintos tamaños de pantallas: móviles, tablets y desktops.
-Se incluyen pruebas unitarias.

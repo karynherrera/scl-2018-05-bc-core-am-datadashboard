@@ -49,11 +49,34 @@ window.computeUsersStats = (users, progress, courses) => {
         reads: {}, // objeto con 3 propiedades total, completed y percent
         quizzes: {}, // objeto con 5 propiedades total, completed, percent, scoreSum, scoreAvg
         percent: 0};// numero entre 0 y 100 que indica el porcentaje de completitud del usuario respecto a todos los cursos de su cohort
-    });
+      
+        /*
+        let unidades = Object.keys(progress[i][1].intro.units);// aca accedemos a las unidades de los cursos de cada alumna
+          let cursos = Object.keys(progress[i][1]); // aca accedemos a los cursos que tiene cada alumna
+          let porcentajeGral = progress[i][1].intro.percent;
+          let percentUnitGral;
+          let percentUnits = Object.entries(progress[i][1].intro.units);
+          for (let x = 0; x < percentUnits.length; x++) {
+            // console.log(percentUnits[x]);
+            percentUnits.forEach(unit=>{
+              percentUnitGral = unit.find(element => element.percent);
+              // result=unit.forEach(element => element.percent)
+            });
+            // console.log(percentUnits);
+            // console.log(percentUnitGral);
+             percentUnitGral.forEach(element =>{
+                console.log(element.percent);
+              });
+            }
+       
+      element.stats.percent= percentUnitGral.percent; */
+      });
+
+   // window.buscar(users, clave, progress);
   });  
   // element.stats.percent = 10;
   // let user = Object.entries(usuario);
- 
+ // 
   // console.log(progress[0]);
 };
 
@@ -81,19 +104,30 @@ window.buscar = (users, clave, progress) =>{
           let unidades = Object.keys(progress[i][1].intro.units);// aca accedemos a las unidades de los cursos de cada alumna
           let cursos = Object.keys(progress[i][1]); // aca accedemos a los cursos que tiene cada alumna
           let porcentajeGral = progress[i][1].intro.percent;
+          let percentUnitGral;
           let percentUnits = Object.entries(progress[i][1].intro.units);
-          //const resultado = percentUnits.find( unidad => unidad.units==='introduction');
-          let result;
-
-          //console.log(Object.entries(percentUnits[0][1]));
-          percentUnits.forEach (unit=>{
-              unit.element;
-              //result=unit.forEach(element => element.percent)
-            //  console.log(unit.element);
+          for (let x = 0; x < percentUnits.length; x++) {
+            // console.log(percentUnits[x]);
+            percentUnits.forEach(unit=>{
+              percentUnitGral = unit.find(element => element.percent);
+              // result=unit.forEach(element => element.percent)
             });
-          //console.log(result);
+            // console.log(percentUnits);
+            // console.log(percentUnitGral);
+            /* percentUnitGral.forEach(element =>{
+                console.log(element.percent);
+              });*/
+          }
+          // console.log(percentUnitGral.percent);
+          // const resultado = percentUnits.find( unidad => unidad.units==='introduction');
+          let result;
+          // console.log(percentUnits);
+
+          // console.log(Object.entries(percentUnits[0][1]));
+          
+          // console.log(result);
           // console.log((element[1].name)+' '+); 
-          let celdaUnits, textoCeldaUnits, colUnits;
+          let celdaUnits, textoCeldaUnits, colUnits, celdaUnitsPercent;
           let hilera = document.createElement('tr');// crea la fila para la info
           for (let i = 0; i < cursos.length; i++) { 
             let celdaCurso = document.createElement('td'); // crea la celda para los cursos
@@ -112,9 +146,18 @@ window.buscar = (users, clave, progress) =>{
               colUnits.appendChild(celdaUnits);
             }
             
+            colUnitsPercent = document.createElement('td');
+            for (let j = 0; j < unidades.length; j++) {
+              celdaUnitsPercent = document.createElement('tr');
+              let textoPercenUnit = document.createTextNode(percentUnitGral.percent + '% Completado');
+              celdaUnitsPercent.appendChild(textoPercenUnit);
+              colUnitsPercent.appendChild(celdaUnitsPercent);
+            }
+
             hilera.appendChild(celdaCurso);
             hilera.appendChild(celdaPercenGral);
             hilera.appendChild(colUnits);
+            hilera.appendChild(colUnitsPercent);
           }
           
           tblBody.appendChild(hilera);

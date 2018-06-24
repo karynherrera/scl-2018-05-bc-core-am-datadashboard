@@ -70,7 +70,8 @@ window.fillProgressList = ()=>{
   let progress = Object.entries(window.progressData);
   let courses = Object.entries(window.cohortsData);
   
-
+  window.computeUsersStats(users, progress, courses);
+  
   const inputBuscar = document.getElementById('buscarAlumna');
   inputBuscar.addEventListener('change', ()=> {
     window.limpiarTabla();
