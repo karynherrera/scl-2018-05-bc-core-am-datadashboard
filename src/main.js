@@ -71,23 +71,24 @@ window.fillProgressList = ()=>{
   let courses = Object.entries(window.cohortsData);
   
 
-  btnSearch.addEventListener('click', function(event) {
-    /*
-    const tblBody = document.getElementById('tbody');
-    const tabla = document.getElementById('table');
-    tabla.appendChild(tblBody); */
-    event.preventDefault();
+  const inputBuscar = document.getElementById('buscarAlumna');
+  inputBuscar.addEventListener('change', ()=> {
     window.limpiarTabla();
-    // tabla.removeChild(tblBody);
+
+  });
+
+  btnSearch.addEventListener('click', ()=> {
     const clave = document.getElementById('buscarAlumna').value;
     window.buscar(users, clave, progress);
+
     // tabla.removeChild(tblBody);
   });
 
   lista.addEventListener('change', ()=>{
     window.limpiarTabla();
-    let x = document.getElementById('nombreAlumna').value;
+    const x = document.getElementById('nombreAlumna').value;
     window.buscar(users, x, progress);
+    inputBuscar.value= x;
   });
   // window.computeUsersStats(users, progress, courses);
   // console.log(result);
