@@ -71,7 +71,7 @@ window.fillProgressList = ()=>{
   let courses = Object.entries(window.cohortsData);
   
   window.computeUsersStats(users, progress, courses);
-  
+
   const inputBuscar = document.getElementById('buscarAlumna');
   inputBuscar.addEventListener('change', ()=> {
     window.limpiarTabla();
@@ -115,3 +115,89 @@ window.fillProgressList = ()=>{
 };
 
 
+lista.addEventListener('change', ()=>{
+  let x = document.getElementById('nombreAlumna').value;
+  
+  tblBody = document.getElementById('tbody');
+  // Crea las hileras de la tabla
+  var hilera = document.createElement('tr');
+  var celda = document.createElement('td');
+  var textoCelda = document.createTextNode(x);
+  celda.appendChild(textoCelda);
+  hilera.appendChild(celda);
+  tblBody.appendChild(hilera);
+});
+
+// mostrar resultados en display en porcentaje desempeño del alumnas en total por cohort
+
+selectCohort.addEventListener('change', users);
+selectCohort.addEventListener('change', percentage);
+
+function getCohort() {
+  if (selectUsers.value !== 0) {
+    var cohort = Object.keys(data[selectUsers.value]);
+    var usersCount = cohort.length;
+    selectCohort.length = usersCount;
+
+    for (var i = 0; i < usersCount; i++) {
+      selectCohort.options[i].value = cohort[i];
+      selectCohort.options[i].text = cohort[i];
+    }
+  } else {
+    selectCohort.length = -1;
+    selectCohort.options[0].value = '---';
+    selectCohort.options[0].text = '---';
+  }
+  selectCohort.options[0].selected = true;
+}
+
+var displayTotalUsers = document.getElementsByClassName('usersCount')[2];
+var displayTotalUsersGeneralIntro = document.getElementsByClassName('usersCount')[2];
+var displayTotalUsersGeneralCompleted = document.getElementsByClassName('completed')[9];
+
+function usersReached(users, intro, completed) {
+  var users = users.map(function(id) {
+    var sumOfIntroPercent = id.intro.reduce(function(sum, intro) {
+      return sum + intro.percent[completed];
+    }, 0);
+
+    return sumOfSprintsScores / student.sprints.length;
+  });
+
+  return usersPercentCompleted.filter(function(completed) {
+    return completed >= percent;
+  }).length;
+}
+
+function usersPercentGeneral(users, percent) {
+  var usersPercentCompleted = users.map(function(id) {
+    var sumOfIntroPercent = id.intro.reduce(function(sum, intro) {
+      return sum + intro.percent.users + intro.percent.completed;
+    }, 0);
+
+    return sumOfIntroPercent / id.intro.length;
+  });
+
+  return usersPercentCompleted.filter(function(completed) {
+    return completed >= percent;
+  }).length;
+}
+
+
+function percentage() {
+  var users = cohort.users;
+  var totalGeneral = users.length;
+
+  var general = document.getElementsByClassName('usersCount')[1].textContent;
+  var intro = document.getElementsByClassName('usersCount')[1].textContent;
+  var unit = document.getElementsByClassName('usersCount')[3].textContent;
+
+ 
+  var generalPercentage = document.getElementsByClassName('percent')[1];
+  var introPercentage = document.getElementsByClassName('percent')[3];
+
+  
+  generalPercentage.innerText = Math.round((general * 100) / total);
+  introPercentage.innerText = Math.round((intro * 100) / total);
+  unitPercentage.innerText = Math.round((unit * 100) / total);
+}
