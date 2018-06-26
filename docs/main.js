@@ -71,6 +71,9 @@ window.fillProgressList = ()=>{
   let courses = Object.entries(window.cohortsData);
   
   window.computeUsersStats(users, progress, courses);
+  //let result = window.computeUsersStats(users, progress, courses);
+  //let respuesta = Object.entries(result);
+  //console.log(result);
 
   const inputBuscar = document.getElementById('buscarAlumna');
   inputBuscar.addEventListener('change', ()=> {
@@ -90,8 +93,7 @@ window.fillProgressList = ()=>{
     window.buscar(users, x, progress);
     inputBuscar.value = x;
   });
-  // window.computeUsersStats(users, progress, courses);
-  // console.log(result);
+  
   /*
   for (let i in alumna) {
     let user;
@@ -130,8 +132,8 @@ lista.addEventListener('change', ()=>{
 
 // mostrar resultados en display en porcentaje desempeño del alumnas en total por cohort
 
-selectCohort.addEventListener('change', users);
-selectCohort.addEventListener('change', percentage);
+//selectCohort.addEventListener('change', users);
+//selectCohort.addEventListener('change', percentage);
 
 function getCohort() {
   if (selectUsers.value !== 0) {
