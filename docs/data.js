@@ -71,12 +71,16 @@ window.computeUsersStats = (users, progress, courses) => {
     // console.log(users[i]);
     // for(let elemento of objProgress){ // esto itera por las llaves del objeto progress, muestra el id y el objeto con los cursos
     objProgress = arrayProgress[1]; // este objeto ya se puede manipular y usar directamente llamando sus propiedades como objProgress.intro y devuelve un objeto con todo lo que tiene el objeto intro
-    //console.log(objProgress.intro);
+    // console.log(objProgress.intro);
     for (let x in objProgress) {
       objCourses = objProgress[x]; // acá objCourses itera sobre los cursos que tenga asignada la alumna, en este caso intro
     };
-    percentGral=objCourses.percent; //almacena el porcentaje general del curso
-    objUnits = Object.entries(percentGral.units);
+    percentGral = objCourses.percent; // almacena el porcentaje general del curso
+    objUnits = objCourses.units;// accede al objeto que contiene las unidades
+    for (let v = 0; v < objUnits.length; v++) {
+      let unit = objUnits[v];
+      console.log(oBJunit[v]);
+    }
     
     // console.log('nombre:'+ objUser.name +' porcentaje curso '+objCourses.percent);
    
