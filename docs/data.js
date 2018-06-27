@@ -38,9 +38,8 @@ window.datas = ()=>{
 };
 
 window.computeUsersStats = (users, progress, courses) => {
-  let usuario;
-  let result;
-  let objUser;
+  let objUser, objUnits, objCourses;
+  let percentGral;
   let objProgress, arrayProgress;
     
   // let userArray = Object.entries(users);
@@ -48,7 +47,7 @@ window.computeUsersStats = (users, progress, courses) => {
   for (let i = 0; i < users.length; i++) {
     let userId = users[i][1].id;
     objUser = users[i][1]; // este objeto ya se puede manipular y usar directamente llamando sus propiedades como objUser.name
-    //console.log(progress[1][0]);
+    // console.log(progress[1][0]);
     // console.log(objProgress);
     
     users.forEach(property=>{ // cada element es un sub array con propiedades, entonces a c/u le creamos una propiedad nueva stats
@@ -66,29 +65,23 @@ window.computeUsersStats = (users, progress, courses) => {
             scoreSum: 0}, // objeto con 5 propiedades total, completed, percent, scoreSum, scoreAvg
           scoreAvg: 0};
       });
-    });//aca termina el forEach que recorre users y agrega la propiedad stats
-    arrayProgress = progress[i];
-   //console.log(users[i]);
-    //for(let elemento of objProgress){ // esto itera por las llaves del objeto progress, muestra el id y el objeto con los cursos
-    objProgress= arrayProgress[1]; // este objeto ya se puede manipular y usar directamente llamando sus propiedades como objProgress.intro y devuelve un objeto con todo lo que tiene el objeto intro
+    });// aca termina el forEach que recorre users y agrega la propiedad stats
 
-    console.log(objProgress.intro);
-     
+    arrayProgress = progress[i];
+    // console.log(users[i]);
+    // for(let elemento of objProgress){ // esto itera por las llaves del objeto progress, muestra el id y el objeto con los cursos
+    objProgress = arrayProgress[1]; // este objeto ya se puede manipular y usar directamente llamando sus propiedades como objProgress.intro y devuelve un objeto con todo lo que tiene el objeto intro
+    //console.log(objProgress.intro);
+    for (let x in objProgress) {
+      objCourses = objProgress[x]; // acá objCourses itera sobre los cursos que tenga asignada la alumna, en este caso intro
+    };
+    percentGral=objCourses.percent; //almacena el porcentaje general del curso
+    objUnits = Object.entries(percentGral.units);
     
-    
-    // let userProgress = progress[i];
-    //console.log(objUser.stats);
-   // console.log(objUser);
-    //console.log(objUser.name+'' +Progress[i]);
-    /*
-    element.forEach(property=>{ // cada element es un sub array con propiedades, entonces a c/u le creamos una propiedad nueva stats
-      property.stats = { // se le crea una propiedad stats que es un objeto de objetos que contiene:
-        exercises: {}, // objeto con 3 propiedades total, completed y percent
-        reads: {}, // objeto con 3 propiedades total, completed y percent
-        quizzes: {}, // objeto con 5 propiedades total, completed, percent, scoreSum, scoreAvg
-        percent: 0};// numero entre 0 y 100 que indica el porcentaje de completitud del usuario respecto a todos los cursos de su cohort
+    // console.log('nombre:'+ objUser.name +' porcentaje curso '+objCourses.percent);
+   
       
-        /*
+    /*
         let unidades = Object.keys(progress[i][1].intro.units);// aca accedemos a las unidades de los cursos de cada alumna
           let cursos = Object.keys(progress[i][1]); // aca accedemos a los cursos que tiene cada alumna
           let porcentajeGral = progress[i][1].intro.percent;
