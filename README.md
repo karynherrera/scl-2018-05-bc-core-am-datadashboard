@@ -32,6 +32,8 @@ _ver_ y _usar_ la data de progreso del LMS. Para ello, creamos un
 La primera etapa en nuestro proceso de diseño fue la investigación, tuvimos una entrevista con la Training Manager, que en este caso es nuestro cliente, investigamos haciendole preguntas directas, como que tipo de información necesita ver de las alumnas dependiendo la sede, dependiendo el cohort y dependiendo el progreso de cada alumna.
 Lo cual nos permitió visualizar el tipo de información que necesita el cliente.
 El objetivo principal del cliente es poder visualizar el progreso de las alumnas, quienes van bien y quienes no tanto para poder ayudarlas. Tambien poder comparar la cantidad de alumnas que hay en cada cohort de manera rapida y ordenada.
+Adjuntamos audio de la entrevista en la carpeta adjunta: Entrevista.
+
 
 #### 2) Analisis de Datos
 Con los datos proporcionados por el cliente analizamos la posible solución de elaborar un dashboard con información concentrada en un sidebar con un buscador y un menú de 2 pestañas, en una informacion por cohorts mostrandolos con la cantidad de alumnas inscritas en el cohort y con un buscador por cohort y la otra pestaña para los datos de las alumnas, puede elegir una alumna en especifico del listado y se despliega la información de esta, su progreso general y el cohort en el que tiene el progreso, con la facilidad de ordenarlo por orden ascendente o descendente, todo esto en la menor cantidad de clicks posibles.
@@ -40,8 +42,8 @@ Con los datos proporcionados por el cliente analizamos la posible solución de e
 
 Para plazmar las ideas del brainstorming diseñamos unos wireframes basicos en base a lo solicitado por el cliente.
 
-![Alt text](Documents/sketch/Prototipado1.jpg?raw=true "1")
-![Alt text](Documents/sketch/Prototipado2.jpg?raw=true "2")
+![Alt text](Documents/Sketch/Prototipado1.jpg?raw=true "1")
+![Alt text](Documents/Sketch/Prototipado2.jpg?raw=true "2")
 
 Luego hicimos un scketch de baja fidelidad para ver de forma más clara como organizariamos las tareas e información que requiere el cliente.
 

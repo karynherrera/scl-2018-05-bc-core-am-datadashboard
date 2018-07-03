@@ -38,19 +38,68 @@ window.datas = ()=>{
 };
 
 window.computeUsersStats = (users, progress, courses) => {
-  let usuario;
-  let result;
+  let objUser, objUnits, objCourses, objParts;
+  let percentGral, insideUnits,insideObjParts;
+  let objProgress, arrayProgress;
   
+  // let userArray = Object.entries(users);
+  // let progressArray = Object.entries(progress);
+  for (let i = 0; i < users.length; i++) {
+    let userId = users[i][1].id;
+    objUser = users[i][1]; // este objeto ya se puede manipular y usar directamente llamando sus propiedades como objUser.name
+    // console.log(progress[1][0]);
+    // console.log(objProgress);
+    
+    users.forEach(property=>{ // cada element es un sub array con propiedades, entonces a c/u le creamos una propiedad nueva stats
+      property.forEach(element=>{
+        element.stats = { // se le crea a cada ususario una propiedad stats que es un objeto de objetos que contiene:
+          exercises: {total: 0,
+            completed: 0,
+            percent: 0}, // objeto con 3 propiedades total, completed y percent
+          reads: {total: 0,
+            completed: 0,
+            percent: 0}, // objeto con 3 propiedades total, completed y percent
+          quizzes: {total: 0,
+            completed: 0,
+            percent: 0,
+            scoreSum: 0}, // objeto con 5 propiedades total, completed, percent, scoreSum, scoreAvg
+          scoreAvg: 0};
+      });
+    });// aca termina el forEach que recorre users y agrega la propiedad stats
 
-  usuario = users.forEach(element=>{ 
-    element.forEach(property=>{ // cada element es un sub array con propiedades, entonces a c/u le creamos una propiedad nueva stats
-      property.stats = { // se le crea una propiedad stats que es un objeto de objetos que contiene:
-        exercises: {}, // objeto con 3 propiedades total, completed y percent
-        reads: {}, // objeto con 3 propiedades total, completed y percent
-        quizzes: {}, // objeto con 5 propiedades total, completed, percent, scoreSum, scoreAvg
-        percent: 0};// numero entre 0 y 100 que indica el porcentaje de completitud del usuario respecto a todos los cursos de su cohort
+    arrayProgress = progress[i];
+    // console.log(users[i]);
+    // for(let elemento of objProgress){ // esto itera por las llaves del objeto progress, muestra el id y el objeto con los cursos
+    objProgress = arrayProgress[1]; // este objeto ya se puede manipular y usar directamente llamando sus propiedades como objProgress.intro y devuelve un objeto con todo lo que tiene el objeto intro
+    // console.log(objProgress.intro);
+    for (let x in objProgress) {
+      objCourses = objProgress[x]; // acá objCourses itera sobre los cursos que tenga asignada la alumna, en este caso intro
+    };
+    percentGral = objCourses.percent; // almacena el porcentaje general del curso
+    objUnits = objCourses.units;// accede al objeto que contiene las unidades
+    // console.log(objUnits);
+    insideUnits = Object.values(objUnits);
+    for (let v = 0; v < insideUnits.length; v++) {
+      // console.log(insideUnits[v].totalParts);// esto ya puede manipularse y entrar a las propiedades dentro de cada unidad
+      objParts = insideUnits[v].parts;// acá accedemos al objeto parts
+      insideObjParts =Object.values(objParts);
+      //console.log(insideObjParts);
+      for (let d = 0; d < insideObjParts.length; d++) {
+        // console.log(insideObjParts[d]);
+      }
+    }
       
-        /*
+    
+    /*
+    for (let v = 0; v < objUnits.length; v++) {
+      let unit = objUnits[v];
+      console.log(oBJunit[v]);
+    }*/
+    
+    // console.log('nombre:'+ objUser.name +' porcentaje curso '+objCourses.percent);
+   
+      
+    /*
         let unidades = Object.keys(progress[i][1].intro.units);// aca accedemos a las unidades de los cursos de cada alumna
           let cursos = Object.keys(progress[i][1]); // aca accedemos a los cursos que tiene cada alumna
           let porcentajeGral = progress[i][1].intro.percent;
@@ -69,19 +118,50 @@ window.computeUsersStats = (users, progress, courses) => {
               });
             }
        
-      element.stats.percent= percentUnitGral.percent; */
-      });
-
-   // window.buscar(users, clave, progress);
-  });  
+      element.stats.percent= percentUnitGral.percent; 
+      });*/
+  };// aqui termina el for de users.length
   // element.stats.percent = 10;
   // let user = Object.entries(usuario);
- // 
+  // 
   // console.log(progress[0]);
+  // return users;
+  // console.log(users);
 };
 
 window.sortUsers = (users, orderBy, orderDirection) =>{
-
+  if (orderBy === "name") { //name es el campo por el que quiere ordenarlo
+    //sort es una funcion que ordena los arreglos, recibe una funcion que compara un elemento con otro
+    return users.sort(function (a, b) {
+      if (orderDirection == "ASC") {
+        //localCompare compara 2 strings que en este caso son los nombres de las alumnas
+        return a.name.localeCompare(b.name);
+      } else {
+        //esto mostrara el ordenamiento en orden descendente
+        return a.name.localeCompare(b.name) * -1;
+      }
+    });
+  }
+  if (orderBy === "percent") {
+    let result; 
+    return users.sort(function (a, b) {
+      if (orderDirection == "ASC") {
+        return a.stats.percent - b.stats.percent;
+        /*
+        if(a.stats.percent > b.stats.percent){
+          result= 1;
+          return result; 
+        } else if(a.stats.percent < b.stats.percent) {
+          result= -1;
+          return result; 
+        } 
+        */
+      }else{
+        return (a.stats.percent - b.stats.percent)*-1;
+      }
+      
+    });
+  }
 };
 
 window.filterUsers = (users, filterBy) => {

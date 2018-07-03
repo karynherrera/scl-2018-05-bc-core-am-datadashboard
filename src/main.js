@@ -130,8 +130,8 @@ lista.addEventListener('change', ()=>{
 
 // mostrar resultados en display en porcentaje desempeño del alumnas en total por cohort
 
-selectCohort.addEventListener('change', users);
-selectCohort.addEventListener('change', percentage);
+//selectCohort.addEventListener('change', users);
+//selectCohort.addEventListener('change', percentage);
 
 function getCohort() {
   if (selectUsers.value !== 0) {

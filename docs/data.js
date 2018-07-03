@@ -6,9 +6,9 @@ window.cohortsData = [];
 
 window.datas = ()=>{
   Promise.all([
-    fetch('data/cohorts.json'),
-    fetch('data/cohorts/lim-2018-03-pre-core-pw/users.json'),
-    fetch('data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+    fetch('/data/cohorts.json'),
+    fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json'),
+    fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
   ]).then((responses) => {
     return Promise.all(
       responses.map(
@@ -33,15 +33,15 @@ window.datas = ()=>{
       });
     });
   }).catch((error) => {
-    // console.error("Error al cargar la data");
+    
   });
 };
 
 window.computeUsersStats = (users, progress, courses) => {
-  let objUser, objUnits, objCourses;
-  let percentGral;
+  let objUser, objUnits, objCourses, objParts;
+  let percentGral, insideUnits, insideObjParts;
   let objProgress, arrayProgress;
-    
+  
   // let userArray = Object.entries(users);
   // let progressArray = Object.entries(progress);
   for (let i = 0; i < users.length; i++) {
@@ -77,10 +77,24 @@ window.computeUsersStats = (users, progress, courses) => {
     };
     percentGral = objCourses.percent; // almacena el porcentaje general del curso
     objUnits = objCourses.units;// accede al objeto que contiene las unidades
+    // console.log(objUnits);
+    insideUnits = Object.values(objUnits);
+    for (let v = 0; v < insideUnits.length; v++) {
+      // console.log(insideUnits[v].totalParts);// esto ya puede manipularse y entrar a las propiedades dentro de cada unidad
+      objParts = insideUnits[v].parts;// acá accedemos al objeto parts
+      insideObjParts = Object.values(objParts);
+      // console.log(insideObjParts);
+      for (let d = 0; d < insideObjParts.length; d++) {
+        // console.log(insideObjParts[d]);
+      }
+    }
+      
+    
+    /*
     for (let v = 0; v < objUnits.length; v++) {
       let unit = objUnits[v];
       console.log(oBJunit[v]);
-    }
+    }*/
     
     // console.log('nombre:'+ objUser.name +' porcentaje curso '+objCourses.percent);
    
@@ -116,11 +130,49 @@ window.computeUsersStats = (users, progress, courses) => {
 };
 
 window.sortUsers = (users, orderBy, orderDirection) =>{
-
+  if (orderBy === 'name') { // name es el campo por el que quiere ordenarlo
+    // sort es una funcion que ordena los arreglos, recibe una funcion que compara un elemento con otro
+    return users.sort(function(a, b) {
+      if (orderDirection == 'ASC') {
+        // localCompare compara 2 strings que en este caso son los nombres de las alumnas
+        return a.name.localeCompare(b.name);
+      } else {
+        // esto mostrara el ordenamiento en orden descendente
+        return a.name.localeCompare(b.name) * -1;
+      }
+    });
+  }
+  if (orderBy === 'percent') {
+    let result; 
+    return users.sort(function(a, b) {
+      if (orderDirection == 'ASC') {
+        return a.stats.percent - b.stats.percent;
+        /*
+        if(a.stats.percent > b.stats.percent){
+          result= 1;
+          return result; 
+        } else if(a.stats.percent < b.stats.percent) {
+          result= -1;
+          return result; 
+        } 
+        */
+      }else {
+        return (a.stats.percent - b.stats.percent) * -1;
+      }
+    });
+  }
 };
 
 window.filterUsers = (users, filterBy) => {
-
+  if (search) {
+    if (users) {
+      search = search.toLowerCase();
+      return users.filter(user => user &&
+         user.name &&
+        user.name.toLowerCase().indexOf(search) >= 0);
+    }
+  }
+  return users;
 };
 
 window.processCohortData = (cohortData, orderBy, orderDirection, filterBy) => {
