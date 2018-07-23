@@ -7,8 +7,8 @@ window.cohortsData = [];
 window.datas = ()=>{
   Promise.all([
     fetch('data/cohorts.json'),
-    fetch('..data/cohorts/lim-2018-03-pre-core-pw/users.json'),
-    fetch('..data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+    fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json'),
+    fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
   ]).then((responses) => {
     return Promise.all(
       responses.map(
