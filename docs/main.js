@@ -64,6 +64,15 @@ window.fillCohortList = ()=>{
   });
 };
 
+// haciendo conexxion al JSON carga toda la lista del cohort y se puede seleccionar una opcion
+const selectCohortTable = document.getElementById('nombreCohort');
+window.fillCohortList = ()=>{
+  window.cohortsData.forEach(element =>{
+    let optionNode = document.createElement('option');
+    optionNode.text = element.id;
+    selectCohortTable.appendChild(optionNode);
+  });
+};
 
 window.fillProgressList = ()=>{
   let users = Object.entries(window.userData);
@@ -71,6 +80,7 @@ window.fillProgressList = ()=>{
   let courses = Object.entries(window.cohortsData);
   
   window.computeUsersStats(users, progress, courses);
+  
 
   const inputBuscar = document.getElementById('buscarAlumna');
   inputBuscar.addEventListener('change', ()=> {
@@ -112,26 +122,50 @@ window.fillProgressList = ()=>{
   }
   let progress = progresObject[1];
   }*/
+  // MUESTRA A LA ALUMNA SELECCIONADA CON SUS STATS 
+  lista.addEventListener('change', ()=>{
+    let x = document.getElementById('nombreAlumna').value;
+  
+    tblBody = document.getElementById('tbody');
+    // Crea las hileras de la tabla
+    var hilera = document.createElement('tr');
+    var celda = document.createElement('td');
+    var textoCelda = document.createTextNode(x);
+    celda.appendChild(textoCelda);
+    hilera.appendChild(celda);
+    tblBody.appendChild(hilera);
+  });
+
+  const listaCohorts = document.getElementById('nombreCohort'); // select para elegir cohort por nombre
+  const btnSearchCohort = document.getElementById('btnBuscarCohort');// boton para buscar cohort
+
+  
+  listaCohorts.addEventListener('change', ()=>{
+    // window.limpiar();
+    const x = document.getElementById('nombreCohort').value;
+    window.buscar(users, x, progress);
+    const buscarCohort = document.getElementById('buscarCohort');
+    buscarCohort.value = x;
+  });  
+
+  // mostrar resultados en display en porcentaje desempeño del alumnas en total por cohort
+  listaCohorts.addEventListener('change', ()=>{
+    let x = document.getElementById('nombreCohort').value;
+  
+    tblBody = document.getElementById('tbodyCohorts');
+    // Crea las hileras de la tabla
+    var hilera = document.createElement('tr');
+    var celda = document.createElement('td');
+    var textoCelda = document.createTextNode(x);
+    celda.appendChild(textoCelda);
+    hilera.appendChild(celda);
+    tblBody.appendChild(hilera);
+  });
 };
 
 
-lista.addEventListener('change', ()=>{
-  let x = document.getElementById('nombreAlumna').value;
-  
-  tblBody = document.getElementById('tbody');
-  // Crea las hileras de la tabla
-  var hilera = document.createElement('tr');
-  var celda = document.createElement('td');
-  var textoCelda = document.createTextNode(x);
-  celda.appendChild(textoCelda);
-  hilera.appendChild(celda);
-  tblBody.appendChild(hilera);
-});
-
-// mostrar resultados en display en porcentaje desempeño del alumnas en total por cohort
-
-//selectCohort.addEventListener('change', users);
-//selectCohort.addEventListener('change', percentage);
+// selectCohort.addEventListener('change', users);
+// selectCohort.addEventListener('change', percentage);
 
 function getCohort() {
   if (selectUsers.value !== 0) {

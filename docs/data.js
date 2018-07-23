@@ -264,3 +264,11 @@ window.limpiarTabla = () =>{
     parent.removeChild(tblBody);
   } 
 };
+
+window.limpiar = () =>{
+  const tblBody = document.getElementById('tbodyCohorts');
+  if (tblBody !== null) {
+    let parent = tblBody.parentElement;
+    parent.removeChild(tblBody);
+  } 
+};
