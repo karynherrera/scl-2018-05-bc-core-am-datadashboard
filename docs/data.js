@@ -22,6 +22,7 @@ window.datas = ()=>{
     window.fillUserList();// cuando tenga lista la respuesta llamo a la funcion de llenado
     
     window.cohortsData = allJson[0];// la posicion 0 de alljason tiene el arreglo con datos de los cohorts
+    // console.log(cohortsData);
     window.fillCohortList();
 
     window.progressData = allJson[2];
@@ -156,7 +157,7 @@ window.sortUsers = (users, orderBy, orderDirection) =>{
           return result; 
         } 
         */
-      }else {
+      } else {
         return (a.stats.percent - b.stats.percent) * -1;
       }
     });
@@ -271,4 +272,48 @@ window.limpiar = () =>{
     let parent = tblBody.parentElement;
     parent.removeChild(tblBody);
   } 
+};
+
+window.statsCourses = (clave, courses) =>{
+  const tablaCursos = document.getElementById('tableCohort');
+  const tblBody = document.createElement('tbodyCohorts');
+  tblBody.setAttribute('id', 'tbodyCohorts');
+  courses.forEach(element => {
+    if (clave === element[1].id) {
+      let id, userCount, start, end;
+      id = element[1].id;
+      userCount = element[1].usersCount;
+      start = element[1].start;
+      end = element[1].end;
+
+      let hilera = document.createElement('tr');
+
+      let celdaIdCurso = document.createElement('td');
+      let textoIdCurso = document.createTextNode(id);
+      celdaIdCurso.appendChild(textoIdCurso);
+
+      colUserCount = document.createElement('td');
+      // let celdauserCount = document.createElement('tr');
+      let textoUserCount = document.createTextNode(userCount);
+      // celdauserCount.appendChild(textoUserCount);
+      colUserCount.appendChild(textoUserCount);
+      
+      colStart = document.createElement('td');
+      // let celdaStart = document.createElement('tr');
+      let textoStart = document.createTextNode(start);
+      // celdaStart.appendChild(textoStart);
+      colStart.appendChild(textoStart);
+      
+      let colEnd = document.createElement('td');
+      let textoEnd = document.createTextNode(end);
+      colEnd.appendChild(textoEnd);
+
+      hilera.appendChild(celdaIdCurso);
+      hilera.appendChild(colUserCount);
+      hilera.appendChild(colStart);
+      hilera.appendChild(colEnd);
+      tblBody.appendChild(hilera);
+      tablaCursos.appendChild(tblBody);
+    }
+  });
 };
