@@ -276,41 +276,43 @@ window.limpiar = () =>{
 
 window.statsCourses = (clave, courses) =>{
   const tablaCursos = document.getElementById('tableCohort');
-  const tblBody = document.createElement('tbodyCohorts');
+  const tblBody = document.createElement('tbody');
+  
   tblBody.setAttribute('id', 'tbodyCohorts');
   courses.forEach(element => {
+    let hilera = document.createElement('tr');
     if (clave === element[1].id) {
       let id, userCount, start, end;
       id = element[1].id;
       userCount = element[1].usersCount;
       start = element[1].start;
       end = element[1].end;
-
-      let hilera = document.createElement('tr');
-
+      
       let celdaIdCurso = document.createElement('td');
       let textoIdCurso = document.createTextNode(id);
       celdaIdCurso.appendChild(textoIdCurso);
 
-      colUserCount = document.createElement('td');
-      // let celdauserCount = document.createElement('tr');
+      let colUsersCount = document.createElement('td');
+      let celdauserCount = document.createElement('tr');
       let textoUserCount = document.createTextNode(userCount);
-      // celdauserCount.appendChild(textoUserCount);
-      colUserCount.appendChild(textoUserCount);
+      celdauserCount.appendChild(textoUserCount);
+      colUsersCount.appendChild(celdauserCount);
       
-      colStart = document.createElement('td');
-      // let celdaStart = document.createElement('tr');
+      let colStarts = document.createElement('td');
+      let celdaStart = document.createElement('tr');
       let textoStart = document.createTextNode(start);
-      // celdaStart.appendChild(textoStart);
-      colStart.appendChild(textoStart);
+      celdaStart.appendChild(textoStart);
+      colStarts.appendChild(celdaStart);
       
       let colEnd = document.createElement('td');
+      let celdaEnd = document.createElement('tr');
       let textoEnd = document.createTextNode(end);
-      colEnd.appendChild(textoEnd);
+      celdaEnd.appendChild(textoEnd);
+      colEnd.appendChild(celdaEnd);
 
       hilera.appendChild(celdaIdCurso);
-      hilera.appendChild(colUserCount);
-      hilera.appendChild(colStart);
+      hilera.appendChild(colUsersCount);
+      hilera.appendChild(colStarts);
       hilera.appendChild(colEnd);
       tblBody.appendChild(hilera);
       tablaCursos.appendChild(tblBody);
